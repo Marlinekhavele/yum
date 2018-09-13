@@ -1,0 +1,52 @@
+{% load bootstrap3 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>New Article</title>
+    {{form.media}} {% block styles %} {% bootstrap_css %}
+
+    <style>
+        .container {
+            width: 401px;
+            background-color: lightblue;
+            margin-top: 6vh;
+        }
+        
+        .checkbox,
+        .radio {
+            position: relative;
+            /* display: block; */
+            ;
+            display: -webkit-inline-box;
+        }
+        
+        body {
+            background-color: #0a3c63;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%} {% bootstrap_form form%}
+            <input type="submit" class="btn btn-success btn-lg" value="Post">
+        </form>
+    </div>
+
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %} {% endblock %}
+
+</body>
+
+</html>
